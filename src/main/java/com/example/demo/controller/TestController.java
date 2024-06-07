@@ -1,7 +1,11 @@
 package com.example.demo.controller;
 
+import org.openqa.selenium.devtools.v85.runtime.Runtime;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import sun.jvm.hotspot.oops.Array;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -13,8 +17,19 @@ import java.util.Map;
 public class TestController {
 
     @RequestMapping("/test")
-    public Object testMethod() {
+    @ResponseBody
+    public Object testMethod(@RequestParam("name") String  name) {
         Map<String, String> aMap = new HashMap<>();
+        System.out.println(name);
+        aMap.put("asd", "Asdasd");
+        return aMap;
+    }
+
+    @RequestMapping("/test2")
+    @ResponseBody
+    public Object testMethod2(String name) {
+        Map<String, String> aMap = new HashMap<>();
+        System.out.println(name);
         aMap.put("asd", "Asdasd");
         return aMap;
     }
